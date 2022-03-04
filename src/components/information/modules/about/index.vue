@@ -18,6 +18,6 @@ export default {
 @import "src/assets/scss/text";
 
 .about {
-  max-width: 70%;
+  max-width: 90%;
 }
 </style>

@@ -2,16 +2,18 @@
   <body class="single-page">
     <div class="single-page__background"></div>
     <v-information/>
+    <v-accent-image/>
   </body>
 </template>
 
 <script>
 
 import VInformation from "@/components/information";
+import VAccentImage from "@/components/accent-image";
 
 export default {
   name: 'App',
-  components: {VInformation}
+  components: {VAccentImage, VInformation}
 }
 </script>
 
@@ -20,7 +22,9 @@ export default {
 @import "src/assets/scss/variables";
 
 :root {
-  font-size: 20px;
+  font-size: 18px;
+
+  transition: 200ms ease-in;
 }
 
 * {
@@ -56,7 +60,6 @@ html {
 .single-page {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 30px;
@@ -64,7 +67,7 @@ html {
   &__background {
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url("https://cdn.fkinuo.ru/QDv-XVa7-I1w.jpg");
+    background-image: $tmp-image;
     background-size: cover;
     filter: blur(5px) brightness(55%) contrast(120%);
     transition: 200ms ease-in;
@@ -75,6 +78,18 @@ html {
     top: 0;
     left: 0;
     z-index: -1;
+  }
+}
+
+@media screen and (max-height: 700px), (max-width: 800px){
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 14px;
   }
 }
 

@@ -33,8 +33,8 @@ export default {
   &__list {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-left: 30px;
+    gap: 1.5rem;
+    margin-left: 1.5rem;
   }
 
   &__button {

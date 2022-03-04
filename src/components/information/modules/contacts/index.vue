@@ -28,27 +28,27 @@ export default {
 
 .contacts {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   position: relative;
   align-items: center;
 
   &:before {
     display: block;
     content: "";
-    height: 100%;
-    width: 20px;
+    height: 2rem;
+    width: 1rem;
     background-color: $yellow;
   }
 
   &__button {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.5rem;
     padding: 5px 0;
   }
 
   &__icon {
-    height: 1.2rem;
+    width: 1.2rem;
   }
 
   &__legend {

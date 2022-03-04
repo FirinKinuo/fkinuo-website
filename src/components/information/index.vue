@@ -23,7 +23,6 @@ export default {
   .information {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    width: 50%;
+    gap: 1.5rem;
   }
 </style>
