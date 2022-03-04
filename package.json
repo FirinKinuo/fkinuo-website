@@ -1,6 +1,6 @@
 {
   "name": "fkinuo.ru-singlepage",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@iconify/vue2": "^1.1.3",
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "node-sass": "^6.0.1",
     "sass-loader": "^10.2.0",
