@@ -23,8 +23,6 @@ export default {
 
   &__background {
     height: 100%;
-    position: relative;
-    right: 50%;
   }
 }
 
