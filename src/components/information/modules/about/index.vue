@@ -1,29 +1,16 @@
 <template>
   <article class="about">
-    <p class="text__black">Age: <span class="text__normal">{{ Age }}</span></p>
-    <p class="text__black">Langs: <span class="text__normal">Python, Golang, JavaScript</span></p>
+    <p class="text__black">Langs: <span class="text__normal">Golang, Python, Dart (Flutter)</span></p>
 
-    <p class="text__black">Skills: <span class="text__normal">Backend Python & Go, Vue, CI/CD, docker, PostgreSQL, MongoDB, Redis, Linux</span>
-    </p>
+    <p class="text__black">Skills: <span class="text__normal">Go, Flutter, Maintain Linux, CI/CD, Docker, PostgreSQL, MongoDB, DDD</span></p>
 
+    <p class="text__black">Interested in: <span class="text__normal">Highload / High availability services, Clean Architecture</span></p>
   </article>
 </template>
 
 <script>
-import {mapGetters, mapMutations} from "vuex";
-
 export default {
   name: "v-information-about",
-  computed: mapGetters({
-    Age: "getAge",
-  }),
-  methods: {
-    ...mapMutations(['calculateCurrentAge'])
-  },
-  beforeMount() {
-    this.calculateCurrentAge()
-  }
-
 }
 </script>
 
@@ -32,5 +19,6 @@ export default {
 
 .about {
   max-width: 90%;
+  font-size: 1.2rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <article class="header">
-    <p class="header__title text__black">Welcome, %username%</p>
-    <p class="header__subtitle text__normal">I’m FirinKinuo, backend developer</p>
+    <p class="header__title text__black">Hello, %username%</p>
+    <p class="header__subtitle text__normal">I’m FirinKinuo, software engineer</p>
   </article>
 </template>
 

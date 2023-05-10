@@ -6,7 +6,6 @@
 
     <div class="links__list">
       <v-link-button icon="akar-icons:github-fill" name="Projects" link="https://git.fkinuo.ru"/>
-      <v-link-button icon="cib:when-i-work" name="Resume" link="https://resume.fkinuo.ru"/>
       <v-link-button icon="cib:codewars" name="Codewars" link="https://codewars.fkinuo.ru"/>
     </div>
   </section>

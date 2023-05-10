@@ -1,7 +1,7 @@
 <template>
   <a :href="link" class="links__button">
     <Icon class="links__icon" :icon="icon" color="white" height="48"/>
-    <span class="links__legend text__bold">{{ name }}</span>
+    <span class="links__legend text__bold text__glitch" :data-glitch="name">{{ name }}</span>
   </a>
 </template>
 
