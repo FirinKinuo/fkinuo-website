@@ -1,9 +1,14 @@
-FROM node:lts-alpine as build-stage
+FROM node:16 as build-stage
+
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+COPY package*.json src/assets/ ./
+
+RUN yarn install --production
+
 COPY . .
-RUN npm run build
+
+RUN yarn run build
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
