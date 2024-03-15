@@ -1,16 +1,33 @@
-FROM node:16 as build-stage
+FROM node:21 as build-vite
+
+WORKDIR /build
+
+COPY package*.json tsconfig.json *.config.js index.html Makefile ./
+COPY public ./public
+COPY .git/ ./.git/
+COPY src/ ./src/
+
+
+RUN make build-vite
+
+FROM golang:1.22 as build-go
+
+WORKDIR /build
+
+COPY go.mod go.sum Makefile main.go ./
+COPY .git/ ./.git
+COPY --from=build-vite /build/dist/ ./dist
+
+RUN make build-go
+
+FROM scratch as final
+
+MAINTAINER FirinKinuo <me@fkinuo.ru>
 
 WORKDIR /app
 
-COPY package*.json src/assets/ ./
+COPY --from=build-go /build/fkinuo-website ./
 
-RUN yarn install --production
+EXPOSE 5555
 
-COPY . .
-
-RUN yarn run build
-
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["./fkinuo-website", "--addr", "0.0.0.0:5555"]
