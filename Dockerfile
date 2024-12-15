@@ -22,7 +22,7 @@ RUN make build-go
 
 FROM scratch as final
 
-MAINTAINER FirinKinuo <me@fkinuo.ru>
+MAINTAINER FirinKinuo <git@fkinuo.dev>
 
 WORKDIR /app
 
