@@ -32,7 +32,13 @@ func errorLogAttr(err error) slog.Attr {
 
 func middlewareLogRequest(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
-		slog.Info(fmt.Sprintf("%s %s for %s", request.Method, request.URL, request.RemoteAddr))
+		clientIP := request.RemoteAddr
+
+		if xForwardedFor := request.Header.Get("X-Forwarded-For"); xForwardedFor != "" {
+			clientIP = xForwardedFor
+		}
+
+		slog.Info(fmt.Sprintf("%s %s for %s", request.Method, request.URL, clientIP))
 		next.ServeHTTP(writer, request)
 	})
 }
