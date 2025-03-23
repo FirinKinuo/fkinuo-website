@@ -1,16 +1,16 @@
-FROM node:21 as build-vite
+FROM node:21 AS build-vite
 
 WORKDIR /build
 
-COPY package*.json tsconfig.json *.config.js index.html Makefile ./
-COPY public ./public
+COPY package*.json tsconfig.json *.config.js Makefile ./
+COPY web/public ./public
 COPY .git/ ./.git/
-COPY src/ ./src/
+COPY web/ ./web/
 
 
 RUN make build-vite
 
-FROM golang:1.22 as build-go
+FROM golang:1.22 AS build-go
 
 WORKDIR /build
 
@@ -20,9 +20,9 @@ COPY --from=build-vite /build/dist/ ./dist
 
 RUN make build-go
 
-FROM scratch as final
+FROM scratch AS final
 
-MAINTAINER FirinKinuo <git@fkinuo.dev>
+LABEL org.opencontainers.image.authors="FirinKinuo <git@fkinuo.dev>"
 
 WORKDIR /app
 

@@ -1,5 +1,5 @@
-import './index.css'
-import './morphing-gradient-background.css'
+import './css/index.css'
+import './css/morphing-gradient-background.css'
 
 document.addEventListener('DOMContentLoaded', () => {
     const interBubble = document.querySelector<HTMLDivElement>('.morphing-gradient_interactive')!;
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tgX = 0;
     let tgY = 0;
 
-    function move() {
+    const move = () => {
         curX += (tgX - curX) / 20;
         curY += (tgY - curY) / 20;
         interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
