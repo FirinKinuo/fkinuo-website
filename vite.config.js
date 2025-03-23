@@ -7,7 +7,10 @@ export default defineConfig({
     build: {
         outDir: path.resolve(__dirname, 'dist'),
         rollupOptions: {
-            input: path.resolve(__dirname, 'web/index.html')
+            input: {
+                main: path.resolve(__dirname, 'web/index.html'),
+                pc: path.resolve(__dirname, 'web/pc/index.html')
+            }
         }
     },
     resolve: {
