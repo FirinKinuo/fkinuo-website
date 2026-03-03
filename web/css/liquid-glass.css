@@ -1,0 +1,77 @@
+@reference "tailwindcss";
+
+.glass-card {
+    @apply
+    select-none rounded-4xl
+    border-white/50
+    backdrop-blur-md
+    antialiased relative overflow-hidden brightness-90;
+
+    box-shadow: inset 1px 1px 0
+    rgba(255,255,255,0.55),
+    0 0 9px rgba(0,0,0,0.2),
+    0 3px 8px rgba(0,0,0,0.15);
+
+    &::before {
+        content: "";
+        @apply absolute inset-0 pointer-events-none z-1000;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+        mix-blend-mode: overlay;
+    }
+}
+
+.glass-background-gradient {
+    @apply bg-linear-to-l from-(--glass-background-accent-color) from-0% to-transparent to-100%
+}
+
+.glass-button {
+    @apply
+    flex items-center
+    text-xl font-medium
+    overflow-hidden select-none px-7 py-3;
+
+    &:hover {
+        scale: 1.01;
+    }
+}
+
+.glass-button__animate {
+    @apply relative duration-200 cursor-pointer;
+
+    &::after {
+        @apply
+        absolute inset-0 pointer-events-none opacity-0 transition-opacity
+        backdrop-blur-2xl mix-blend-screen;
+
+        content: "";
+        background: radial-gradient(
+                circle at var(--glass-button-animation-light-x) var(--glass-button-animation-light-y),
+                rgba(255, 255, 255, 0.28) 0%,
+                rgba(255, 255, 255, 0.08) 25%,
+                transparent 60%
+        );
+        mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black      15%,
+                black      75%,
+                transparent 100%
+        );
+    }
+
+    &:hover::after {
+        opacity: 0.6;
+    }
+
+    &:active::after {
+        opacity: 0.9;
+        transform: scale(1.15);
+        transition: all 80ms ease-out;
+    }
+}
+
+
+
+
+
+
