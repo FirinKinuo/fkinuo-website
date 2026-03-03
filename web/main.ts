@@ -1,26 +1,34 @@
 import './css/index.css'
-import './css/morphing-gradient-background.css'
+import './css/liquid-glass.css'
 
-document.addEventListener('DOMContentLoaded', () => {
-    const interBubble = document.querySelector<HTMLDivElement>('.morphing-gradient_interactive')!;
-    let curX = 0;
-    let curY = 0;
-    let tgX = 0;
-    let tgY = 0;
+document.querySelectorAll('.glass-button').forEach((btn) => {
+    const button = btn as HTMLElement;
 
-    const move = () => {
-        curX += (tgX - curX) / 20;
-        curY += (tgY - curY) / 20;
-        interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-        requestAnimationFrame(() => {
-            move();
-        });
-    }
+    button.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    window.addEventListener('mousemove', (event) => {
-        tgX = event.clientX;
-        tgY = event.clientY;
+        button.style.setProperty('--glass-button-animation-light-x', `${(x / rect.width) * 100}%`);
+        button.style.setProperty('--glass-button-animation-light-y', `${(y / rect.height) * 100}%`);
     });
+});
 
-    move();
+window.addEventListener('load', () => {
+    const main = document.querySelector('main')
+    const overlay = document.getElementById('loading-overlay');
+
+    if (overlay) {
+        setTimeout(() => {
+            if (main) {
+                main.style.removeProperty('opacity')
+            }
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        }, 400)
+
+
+        setTimeout(() => {
+            overlay.remove();
+        }, 1000);
+    }
 });
