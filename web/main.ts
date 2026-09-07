@@ -1,5 +1,5 @@
 import './css/index.css'
-import './css/liquid-glass.css'
+import './css/glassmorphism.css'
 
 document.querySelectorAll('.glass-button').forEach((btn) => {
     const button = btn as HTMLElement;
